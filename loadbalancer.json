@@ -1,0 +1,82 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.46.1.21595",
+      "templateHash": "14652263954796206597"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/loadBalancers",
+      "apiVersion": "2020-11-01",
+      "name": "name",
+      "location": "canadacentral",
+      "properties": {
+        "frontendIPConfigurations": [
+          {
+            "name": "name",
+            "properties": {
+              "publicIPAddress": {
+                "id": "publicIPAddresses.id"
+              }
+            }
+          }
+        ],
+        "backendAddressPools": [
+          {
+            "name": "name"
+          }
+        ],
+        "inboundNatRules": [
+          {
+            "name": "name",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "frontendIPConfiguration.id"
+              },
+              "protocol": "Tcp",
+              "frontendPort": 50001,
+              "backendPort": 3389,
+              "enableFloatingIP": false
+            }
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "name",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "frontendIPConfiguration.id"
+              },
+              "backendAddressPool": {
+                "id": "backendAddressPool.id"
+              },
+              "protocol": "Tcp",
+              "frontendPort": 80,
+              "backendPort": 80,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 5,
+              "probe": {
+                "id": "probe.id"
+              }
+            }
+          }
+        ],
+        "probes": [
+          {
+            "name": "name",
+            "properties": {
+              "protocol": "Tcp",
+              "port": 80,
+              "intervalInSeconds": 5,
+              "numberOfProbes": 2
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
